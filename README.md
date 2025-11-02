@@ -24,7 +24,7 @@ Parses the cloud provider tuple format used throughout KoalaOps workflows.
 
 | Input | Description | Required |
 |-------|-------------|----------|
-| `cloud_provider_cluster` | Cloud tuple in format: provider/account/location/cluster | ✅ |
+| `cloud_provider_cluster` | The cloud provider, account/project, location and cluster name, in format: provider/account/location/cluster | ✅ |
 
 ## Outputs
 
