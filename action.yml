@@ -1,6 +1,6 @@
 name: 'Parse Cloud Provider Cluster'
 description: 'Parses cloud provider/account/location/cluster format'
-author: 'KoalaOps'
+author: 'Skyhook'
 
 branding:
   icon: 'map-pin'

@@ -1,12 +1,12 @@
 # Parse Cloud Provider Cluster
 
-Parses the cloud provider tuple format used throughout KoalaOps workflows.
+Parses the cloud provider tuple format used throughout Skyhook workflows.
 
 ## Usage
 
 ```yaml
 - name: Parse cloud configuration
-  uses: KoalaOps/parse-cloud-provider-cluster@v1
+  uses: skyhook-io/parse-cloud-provider-cluster@v1
   id: cloud
   with:
     cloud_provider_cluster: aws/123456789/us-east-1/production
@@ -58,13 +58,13 @@ azure/subscription-id/eastus/aks-cluster
 ### Use with cloud-login
 ```yaml
 - name: Parse cloud config
-  uses: KoalaOps/parse-cloud-provider-cluster@v1
+  uses: skyhook-io/parse-cloud-provider-cluster@v1
   id: cloud
   with:
     cloud_provider_cluster: ${{ inputs.cloud_tuple }}
 
 - name: Authenticate to cloud
-  uses: KoalaOps/cloud-login@v1
+  uses: skyhook-io/cloud-login@v1
   with:
     provider: ${{ steps.cloud.outputs.provider }}
     account: ${{ steps.cloud.outputs.account }}
@@ -75,7 +75,7 @@ azure/subscription-id/eastus/aks-cluster
 ### Validation
 ```yaml
 - name: Parse and validate
-  uses: KoalaOps/parse-cloud-provider-cluster@v1
+  uses: skyhook-io/parse-cloud-provider-cluster@v1
   id: cloud
   with:
     cloud_provider_cluster: ${{ inputs.cluster_config }}
@@ -96,6 +96,6 @@ The action will fail if:
 
 ## Notes
 
-- The tuple format is standardized across all KoalaOps workflows
+- The tuple format is standardized across all Skyhook workflows
 - Account field may be empty for some providers
 - Location refers to region (AWS), location (GCP), or region (Azure)
