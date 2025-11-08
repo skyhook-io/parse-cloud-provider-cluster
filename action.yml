@@ -1,4 +1,4 @@
-name: 'Parse Cloud Provider Cluster'
+name: 'Skyhook Parse Cloud Provider Cluster'
 description: 'Parses cloud provider/account/location/cluster format'
 author: 'Skyhook'
 
