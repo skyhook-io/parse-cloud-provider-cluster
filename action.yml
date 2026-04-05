@@ -8,12 +8,12 @@ branding:
 
 inputs:
   cloud_provider_cluster:
-    description: 'Cloud provider and cluster in format: provider/account/location/cluster (e.g., aws/123456789012/us-east-1/prod-cluster)'
+    description: 'Cloud provider and cluster in format: provider/account/location/cluster (e.g., aws/123456789012/us-east-1/prod-cluster or other/-/-/my-cluster for BYOK)'
     required: true
 
 outputs:
   provider:
-    description: 'Cloud provider (aws, gcp, azure)'
+    description: 'Cloud provider (aws, gcp, azure, other)'
     value: ${{ steps.parse.outputs.provider }}
   account:
     description: 'Account/Project ID'
@@ -52,11 +52,11 @@ runs:
         
         # Validate provider
         case "$PROVIDER" in
-          aws|gcp|azure)
+          aws|gcp|azure|other)
             echo "✅ Valid provider: $PROVIDER"
             ;;
           *)
-            echo "::error::Invalid cloud provider: $PROVIDER. Must be one of: aws, gcp, azure"
+            echo "::error::Invalid cloud provider: $PROVIDER. Must be one of: aws, gcp, azure, other"
             exit 1
             ;;
         esac
@@ -87,6 +87,10 @@ runs:
           azure)
             # Azure Container Registry format
             REGISTRY="${ACCOUNT}.azurecr.io"
+            ;;
+          other)
+            # BYOK: no default registry — user configures separately
+            REGISTRY=""
             ;;
         esac
         
